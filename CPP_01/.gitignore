@@ -1,0 +1,10 @@
+*.pdf
+*.o
+.vscode
+zombies
+brain
+violence
+sed
+harl
+harlFilter
+*.replace
