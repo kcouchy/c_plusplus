@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:29:37 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/30 14:21:59 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:28:35 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,17 @@ unsigned int	Form::getExecLevel(void) const
 void			Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > m_signLevel)
+	{
+		std::cout
+			<< bureaucrat.getName() << " cannot sign the form "
+			<< m_name << std::endl;
 		throw GradeTooLowException();
+	}
+	std::cout
+		<< bureaucrat.getName()
+		<< " has signed "
+		<< m_name << " form"
+		<< std::endl;
 	m_isSigned = true;
 	return ;
 }
@@ -124,10 +134,12 @@ void			Form::beSigned(Bureaucrat const &bureaucrat)
 std::ostream &operator<<(std::ostream &outStream, Form const &form)
 {
 	std::cout
-		<< "Form " << form.getName() << std::endl
-		<< "	is signed: " << form.getIsSigned() << std::endl
-		<< "	grade required for signature: " << form.getSigLevel() << std::endl
-		<< "	grade required for execution: " << form.getExecLevel()
-		<< std::endl;
+		<< std::endl << " ____________________________________________" << std::endl
+		<< "  Form: " << form.getName() << std::endl
+		<< "   is signed:	" << form.getIsSigned() << std::endl
+		<< "   grade required for signature:	" << form.getSigLevel() << std::endl
+		<< "   grade required for execution:	" << form.getExecLevel()
+		<< std::endl
+		<< " ____________________________________________" << std::endl;
 	return (outStream);
 }
