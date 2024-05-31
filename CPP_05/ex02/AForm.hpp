@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:29:42 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:49:56 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:43:21 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <exception>
@@ -19,14 +19,14 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	public:
-		Form (std::string name, int execLevel, int signLevel);
-		Form (Form const &original);
-		~Form (void);
+		AForm (std::string name, int execLevel, int signLevel);
+		AForm (AForm const &original);
+		~AForm (void);
 
-		Form &operator=(Form const &original);
+		AForm &operator=(AForm const &original);
 
 		static const unsigned int	maxLevel = 1;
 		static const unsigned int	minLevel = 150;
@@ -36,7 +36,8 @@ class Form
 		unsigned int	getSigLevel(void) const;
 		unsigned int	getExecLevel(void) const;
 
-		void	beSigned(Bureaucrat const &bureaucrat);
+		void			beSigned(Bureaucrat const &bureaucrat);
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -49,14 +50,14 @@ class Form
 		};
 
 	private:
-		Form (void);
-		const std::string		m_name;
+		AForm (void);
+		std::string		m_name;
 		bool			m_isSigned;
-		const unsigned int	m_signLevel;
-		const unsigned int	m_execLevel;
+		unsigned int	m_signLevel;
+		unsigned int	m_execLevel;
 
 };
 
-std::ostream &operator<<(std::ostream &outStream, Form const &form);
+std::ostream &operator<<(std::ostream &outStream, AForm const &form);
 
 #endif

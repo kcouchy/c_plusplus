@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:41:34 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:13:59 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:38:09 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	std::cout << "---------------------------------" << std::endl;
 
 	Bureaucrat	bob("Bob", 50);
-	Form		form_banana("Banana", 49, 50);
+	AForm		form_banana("Banana", 49, 50);
 
 
 	std::cout << bob << std::endl;
@@ -34,7 +34,7 @@ int	main(void)
 	std::cout << "---------------------" << std::endl;
 	try
 	{
-		Form	too_high("too_high", 0, 50);
+		AForm	too_high("too_high", 0, 50);
 	}
 	catch (std::exception & e)
 	{
@@ -43,7 +43,7 @@ int	main(void)
 
 	try
 	{
-		Form	too_high("too_high", 50, 0);
+		AForm	too_high("too_high", 50, 0);
 	}
 	catch (std::exception & e)
 	{
@@ -52,7 +52,7 @@ int	main(void)
 	
 	try
 	{
-		Form	too_low("too_low", 151, 50);
+		AForm	too_low("too_low", 151, 50);
 	}
 	catch (std::exception & e)
 	{
@@ -61,7 +61,7 @@ int	main(void)
 
 	try
 	{
-		Form	too_low("too_low", 50, 151);
+		AForm	too_low("too_low", 50, 151);
 	}
 	catch (std::exception & e)
 	{
@@ -111,7 +111,7 @@ int	main(void)
 	std::cout << "- signForm tests    -" << std::endl;
 	std::cout << "---------------------" << std::endl;
 
-	Form	form_bananas("Bananas", 48, 48);
+	AForm	form_bananas("Bananas", 48, 48);
 	try
 	{
 		bob.signForm(form_bananas);

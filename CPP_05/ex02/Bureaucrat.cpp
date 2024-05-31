@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:30:16 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:16:39 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:38:09 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void			Bureaucrat::decrementGrade(void)
 	return;
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	if (form.getIsSigned() == true)
 	{

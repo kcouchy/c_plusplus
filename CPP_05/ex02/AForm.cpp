@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:29:37 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:17:10 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:38:09 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /******************************************************************************/
 /* Constructors/Destructors                                                   */
 /******************************************************************************/
 
-Form::Form (void) : 
+AForm::AForm (void) : 
 	m_name("Default"),
 	m_isSigned(false),
 	m_signLevel(150),
@@ -26,13 +26,13 @@ Form::Form (void) :
 	return ;
 }
 
-Form::Form (std::string name, int signLevel, int execLevel):
+AForm::AForm (std::string name, int signLevel, int execLevel):
 	m_name(name),
 	m_isSigned(false),
 	m_signLevel(signLevel),
 	m_execLevel(execLevel)
 {
-	std::cout << "Form constructor called: " << m_name << std::endl;
+	std::cout << "A_Form constructor called: " << m_name << std::endl;
 
 	if (m_execLevel < maxLevel || m_signLevel < maxLevel)
 		throw GradeTooHighException();
@@ -41,17 +41,17 @@ Form::Form (std::string name, int signLevel, int execLevel):
 	return ;
 }
 
-Form::Form (Form const &original)
+AForm::AForm (AForm const &original)
 {
-	std::cout << "Form copy constructor called: " << original.getName() << std::endl;
+	std::cout << "A_Form copy constructor called: " << original.getName() << std::endl;
 	*this = original;
 	return ;
 }
 
-Form::~Form (void)
+AForm::~AForm (void)
 {
 	std::cout
-		<< "Form destructor called: " 
+		<< "A_Form destructor called: " 
 		<< this->getName() << " has been shredded"
 		<< std::endl;
 	return ;
@@ -61,7 +61,7 @@ Form::~Form (void)
 /* Member function operator overload                                          */
 /******************************************************************************/
 
-Form &Form::operator=(Form const &original)
+AForm &AForm::operator=(AForm const &original)
 {
 	if (this != &original)
 	{
@@ -78,41 +78,41 @@ Form &Form::operator=(Form const &original)
 /* Nested classes                                                             */
 /******************************************************************************/
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
-	return ("Form: Invalid grade : grade too high");
+	return ("A_Form: Invalid grade : grade too high");
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
-	return ("Form: Invalid grade : grade too low");
+	return ("A_Form: Invalid grade : grade too low");
 }
 
 /******************************************************************************/
 /* Member functions                                                           */
 /******************************************************************************/
 
-std::string		Form::getName(void) const
+std::string		AForm::getName(void) const
 {
 	return (m_name);
 }
 
-bool			Form::getIsSigned(void) const
+bool			AForm::getIsSigned(void) const
 {
 	return (m_isSigned);
 }
 
-unsigned int	Form::getSigLevel(void) const
+unsigned int	AForm::getSigLevel(void) const
 {
 	return (m_signLevel);
 }
 
-unsigned int	Form::getExecLevel(void) const
+unsigned int	AForm::getExecLevel(void) const
 {
 	return (m_execLevel);
 }
 
-void			Form::beSigned(Bureaucrat const &bureaucrat)
+void			AForm::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (m_isSigned == true)
 	{
@@ -142,7 +142,7 @@ void			Form::beSigned(Bureaucrat const &bureaucrat)
 /* Non-member operator overload function                                      */
 /******************************************************************************/
 
-std::ostream &operator<<(std::ostream &outStream, Form const &form)
+std::ostream &operator<<(std::ostream &outStream, AForm const &form)
 {
 	std::cout
 		<< " ____________________________________________" << std::endl
