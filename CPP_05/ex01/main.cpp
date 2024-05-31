@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:41:34 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:13:59 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:00:44 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	main(void)
 	std::cout << form_bananas << std::endl;
 	bob.signForm(form_bananas);
 
-	std::cout << "------------------------" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
 	
 	return (0);
 }

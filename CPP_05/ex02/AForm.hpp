@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:29:42 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:43:21 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:28:53 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ class AForm
 
 	private:
 		AForm (void);
-		std::string		m_name;
-		bool			m_isSigned;
-		unsigned int	m_signLevel;
-		unsigned int	m_execLevel;
+		const std::string	m_name;
+		bool				m_isSigned;
+		const unsigned int	m_signLevel;
+		const unsigned int	m_execLevel;
 
 };
 

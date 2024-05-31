@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:29:37 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:38:09 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:30:24 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ AForm::AForm (std::string name, int signLevel, int execLevel):
 	return ;
 }
 
-AForm::AForm (AForm const &original)
+AForm::AForm (AForm const &original):
+	m_name(original.m_name),
+	m_signLevel(original.m_signLevel),
+	m_execLevel(original.m_execLevel)
 {
 	std::cout << "A_Form copy constructor called: " << original.getName() << std::endl;
 	*this = original;
@@ -64,13 +67,7 @@ AForm::~AForm (void)
 AForm &AForm::operator=(AForm const &original)
 {
 	if (this != &original)
-	{
-		m_name = original.m_name;
 		m_isSigned = original.m_isSigned;
-		
-		m_execLevel = original.m_execLevel;
-		m_signLevel = original.m_signLevel;
-	}
 	return (*this);
 }
 

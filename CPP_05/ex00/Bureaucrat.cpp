@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:30:16 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/29 17:54:02 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:48:36 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,8 @@ Bureaucrat::~Bureaucrat(void)
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &original)
 {
-	if (this == &original)
-		return (*this);
-	this->m_name = original.m_name;
-	this->m_grade = original.m_grade;
+	if (this != &original)
+		this->m_grade = original.m_grade;
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:16 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/29 17:50:58 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:48:16 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ class Bureaucrat
 	private:
 		Bureaucrat (void);
 
-		std::string		m_name;
-		unsigned int	m_grade;
+		const std::string	m_name;
+		unsigned int		m_grade;
 
 };
 
