@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:41:34 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/06/03 17:29:39 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/06/03 18:27:20 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
@@ -126,6 +127,11 @@ int	main(void)
 	fred.executeForm(robo);
 	fred.executeForm(pres);
 
+	Intern massias;
+	
+	AForm *fick = massias.makeForm("ShrubberyCreationForm", "banana");
+
+	delete fick;
 
 	std::cout << "------------------------" << std::endl;
 	

@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 16:58:50 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/06/03 17:38:07 by kcouchma         ###   ########.fr       */
+/*   Created: 2024/06/03 17:40:05 by kcouchma          #+#    #+#             */
+/*   Updated: 2024/06/03 18:32:48 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 /******************************************************************************/
 /* Constructors/Destructors                                                   */
 /******************************************************************************/
 
-PresidentialPardonForm::PresidentialPardonForm(void) :
-	AForm ("Presidential Pardon", PRES_SIGN, PRES_EXEC),
-	m_target("home")
+Intern::Intern (void)
 {
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) :
-	AForm ("Presidential Pardon", PRES_SIGN, PRES_EXEC),
-	m_target(target)
-{
-	return ;
-}
-
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &original) :
-	AForm ("Presidential Pardon", PRES_SIGN, PRES_EXEC)
+Intern::Intern (Intern const &original)
 {
 	*this = original;
 	return ;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm(void)
+Intern::~Intern (void)
 {
 	return ;
 }
@@ -46,10 +36,9 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 /* Member function operator overload                                          */
 /******************************************************************************/
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &original)
+Intern &Intern::operator=(Intern const &original)
 {
-	if (this != &original)
-		m_target = original.getTarget();
+	(void)original;
 	return (*this);
 }
 
@@ -57,14 +46,37 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 /* Member functions                                                           */
 /******************************************************************************/
 
-std::string PresidentialPardonForm::getTarget(void)const
+typedef struct {
+	std::string	name;
+	AForm*		(*function)(const std::string &);
+} t_form;
+
+AForm*	Intern::createShrubberyCreationForm(std::string const& target)
 {
-	return (m_target);
+	return (new ShrubberyCreationForm(target));
 }
 
-void	PresidentialPardonForm::_execute(Bureaucrat const & executor)const
+AForm*	Intern::createRobotomyRequestForm(std::string const& target)
 {
-	(void)executor;
-	std::cout << m_target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
-	return ;
+	return (new RobotomyRequestForm(target));
+}
+
+AForm*	Intern::createPresidentialPardonForm(std::string const& target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+AForm *Intern::makeForm(std::string form_name, std::string target)
+{
+	t_form	forms[] = 
+	{
+		{"ShrubberyCreationForm", createShrubberyCreationForm},
+		{"RobotomyRequestForm", createRobotomyRequestForm},
+		{"PresidentialPardonForm", createPresidentialPardonForm}
+	};
+
+	for (int i = 0; i < 3; ++i)
+		if (forms[i].name == form_name)
+			return (forms[i].function(target));
+	return (NULL);
 }

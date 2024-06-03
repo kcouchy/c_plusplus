@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:41:34 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/29 17:59:14 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:48:20 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(void)
 	}
 	catch (std::exception & e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	try
 	{
@@ -43,11 +43,11 @@ int	main(void)
 	}
 	catch (Bureaucrat::GradeTooHighException & e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException & e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	Bureaucrat custom1("Custom1", Bureaucrat::grade_max);
 	try
@@ -56,7 +56,7 @@ int	main(void)
 	}
 	catch (std::exception & e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	std::cout << "------------------------" << std::endl;
 	
