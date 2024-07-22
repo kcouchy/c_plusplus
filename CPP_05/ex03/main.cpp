@@ -132,7 +132,6 @@ int	main(void)
 	AForm *fick = massias.makeForm("ShrubberyCreationForm", "banana");
 
 	delete fick;
-
 	std::cout << "------------------------" << std::endl;
 	
 	return (0);
