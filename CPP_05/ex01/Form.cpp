@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:29:37 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 14:45:42 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/07/23 12:09:08 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void			Form::beSigned(Bureaucrat const &bureaucrat)
 	{
 		std::cout
 			<< bureaucrat.getName() << " cannot sign the "
-			<< m_name << " form" << std::endl;
+			<< m_name << " form because their grade is too low" << std::endl;
 		throw GradeTooLowException();
 	}
 	std::cout

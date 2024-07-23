@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:41:34 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/06/03 18:27:20 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:42:17 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
+#include <unistd.h>
 
 int	main(void)
 {
@@ -84,12 +85,7 @@ int	main(void)
 
 	std::cout << std::endl;
 	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
+	usleep(1500000);
 	robo.execute(bob);
 
 	std::cout << std::endl;
@@ -127,11 +123,22 @@ int	main(void)
 	fred.executeForm(robo);
 	fred.executeForm(pres);
 
+	std::cout << std::endl;
+	std::cout << "----------------" << std::endl;
+	std::cout << "- Intern tests -" << std::endl;
+	std::cout << "----------------" << std::endl;
+
 	Intern massias;
 	
 	AForm *fick = massias.makeForm("ShrubberyCreationForm", "banana");
+	AForm *fock = massias.makeForm("ThisIsNotAForm", "banana");
+
+	kiri.executeForm(*fick);
+	fick->beSigned(kiri);
+	kiri.executeForm(*fick);
 
 	delete fick;
+	delete fock;
 	std::cout << "------------------------" << std::endl;
 	
 	return (0);

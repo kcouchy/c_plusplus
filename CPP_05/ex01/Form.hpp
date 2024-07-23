@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:29:42 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/05/31 12:49:56 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:55:25 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ class Form
 
 	private:
 		Form (void);
-		const std::string		m_name;
-		bool			m_isSigned;
+		const std::string	m_name;
+		bool				m_isSigned;
 		const unsigned int	m_signLevel;
 		const unsigned int	m_execLevel;
 

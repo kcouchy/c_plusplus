@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:41:34 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/06/03 17:29:39 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/07/23 14:04:58 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <unistd.h>
 
 int	main(void)
 {
@@ -24,9 +25,9 @@ int	main(void)
 	Bureaucrat	bob("Bob", 40);
 	Bureaucrat	fred("Fred", 150);
 	Bureaucrat	kiri("Kiri", 1);
-	ShrubberyCreationForm	shrub("shrub");
-	RobotomyRequestForm		robo("robo");
-	PresidentialPardonForm	pres("pres");
+	ShrubberyCreationForm	shrub("Shrub");
+	RobotomyRequestForm		robo("Robo");
+	PresidentialPardonForm	pres("Pres");
 
 	std::cout << std::endl;
 	std::cout << bob << std::endl;
@@ -61,7 +62,7 @@ int	main(void)
 	std::cout << "-----------------------------" << std::endl;
 
 	fred.executeForm(shrub);
-	shrub.execute(bob);
+	shrub.execute(fred);
 
 	bob.executeForm(robo);
 	robo.execute(bob);
@@ -83,16 +84,12 @@ int	main(void)
 
 	std::cout << std::endl;
 	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
-	robo.execute(bob);
+	usleep(1500000);
 	robo.execute(bob);
 
 	std::cout << std::endl;
 	pres.execute(kiri);
+	kiri.executeForm(pres);
 
 	std::cout << std::endl;
 	try

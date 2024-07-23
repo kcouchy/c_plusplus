@@ -6,7 +6,7 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:03:27 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/06/03 16:57:30 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/07/22 18:08:33 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ std::string RobotomyRequestForm::getTarget(void) const
 void	RobotomyRequestForm::_execute(Bureaucrat const & executor) const
 {
 	(void) executor;
+	std::srand(time(NULL));
 	std::cout << "**some drilling noises**" << std::endl;
 	if (std::rand() % 2)
 	{
-		std::cout << RED << "Robotomy failed" << WHITE << std::endl;
+		std::cout << RED << m_target << " robotomy failed" << WHITE << std::endl;
 	}
 	else
 		std::cout << GREEN << m_target << " has been successfully robotomised" << WHITE << std::endl;
