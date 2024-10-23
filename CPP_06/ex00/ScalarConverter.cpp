@@ -6,13 +6,11 @@
 /*   By: kcouchma <kcouchma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:30:25 by kcouchma          #+#    #+#             */
-/*   Updated: 2024/07/25 17:26:12 by kcouchma         ###   ########.fr       */
+/*   Updated: 2024/07/29 12:20:39 by kcouchma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-//TODO handle nans and infs, float limits
 
 void	ScalarConverter::convert(std::string input)
 {
@@ -60,7 +58,7 @@ void	ScalarConverter::convert(std::string input)
 	else
 	{
 		std::cout << "char: ";
-		if (i > 127 || i < 0)
+		if (i > 127 || i < 0 || f != i)
 			std::cout << "impossible" << std::endl;
 		else if (isprint(c) == false)
 			std::cout << "Non displayable" << std::endl;
@@ -68,7 +66,7 @@ void	ScalarConverter::convert(std::string input)
 			std::cout << "'" << c << "'" << std::endl;
 
 		std::cout << "int: ";
-		if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max() || d!=d)
+		if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max() || d!=d || f != i)
 			std::cout << "impossible" << std::endl;
 		else
 			std::cout << i << std::endl;
@@ -78,7 +76,10 @@ void	ScalarConverter::convert(std::string input)
 			std::cout << ".0";
 		std::cout << "f" << std::endl;
 
-		std::cout << "double: " << d << std::endl;
+		std::cout << "double: " << d;
+		if (d - static_cast<int>(d) == 0)
+			std::cout << ".0";
+		std::cout << std::endl;
 	}
 }
 
@@ -103,7 +104,7 @@ int		ScalarConverter::detect_type(std::string input)
 
 bool	ScalarConverter::isCharType(std::string input)
 {
-	if (input.length() != 1 || std::isdigit(input[0]))
+	if (input.length() != 1 || std::isdigit(input[0]) || input.find(".") != input.npos)
 		return (false);
 	return (true);
 }
@@ -148,7 +149,7 @@ bool	ScalarConverter::isFloatType(std::string input)
 	if (isDoubleType(input) == true)
 	{
 		double check = std::atof(input.c_str());
-		if (check <= std::numeric_limits<float>::max() && check >= -(std::numeric_limits<float>::max()))
+		if (check != check || (check <= std::numeric_limits<float>::max() && check >= -(std::numeric_limits<float>::max())))
 			return (true);
 	}
 	return (false);
@@ -165,6 +166,8 @@ bool	ScalarConverter::isDoubleType(std::string input)
 		iter++;
 	size_t pos = iter - input.begin();
 	if (input.compare(pos, input.length()-pos, "nan") == 0 || input.compare(pos, input.length()-pos, "inf") == 0)
+		return (true);
+	else if (input.compare(pos, input.length()-pos, "nanf") == 0 || input.compare(pos, input.length()-pos, "inff") == 0)
 		return (true);
 	if (input.find_first_not_of(".0123456789", pos) != input.npos)
 		return (false);
